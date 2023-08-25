@@ -1,0 +1,52 @@
+<ng-container *ngIf="product.length==0">
+
+    <div class="container">
+        <div class="card">
+            <h4 class="card-title">My Cart</h4>
+    
+        </div>
+        <div class="center">
+            <img src="./assets/addtocart.png" alt="Add to cart image" style="width: 300px; height: 150px;">
+            <h4>Your Cart is Empty!</h4>
+            <h6>Add item to it now</h6>
+            <button class="btn btn-primary" routerLink="/products">Shop Now</button>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="product.length!=0">
+    <div class="container">
+
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table  table-responsive">
+                    <thead>
+                        <tr >
+                            <th>Sr No.</th>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of product;let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{item.title}}</td>
+                            <td><img src="{{item.image}}" alt="Added product image" style="width: 120px;"></td>
+                            <td>{{item.description}}</td>
+                            <td>{{item.price}}</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.total}}</td>
+                            <td>
+                                <button class="btn btn-danger" (click)="removeItem(item)"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
